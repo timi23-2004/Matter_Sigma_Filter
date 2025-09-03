@@ -39,4 +39,3 @@ void log_packet(const struct pcap_pkthdr *header, const packet_info_t *pktinfo) 
     print_packet_info_logfile(time_str, pktinfo);
     close_log_file();
 }
-
