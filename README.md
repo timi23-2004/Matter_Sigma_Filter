@@ -3,8 +3,7 @@
 
 Matter-Sigma-Filter is a network monitoring and filtering tool for Matter (Sigma 1) protocol UDP packets over IPv6.
 The program counts packets per MAC address pair and automatically blocks any pair that exceeds a configurable 
-threshold using ebtables. It supports both live network interface monitoring and offline pcap file analysis,
-and provides detailed statistics and logging.
+threshold using ebtables. It supports both live network interface monitoring and offline pcap file analysis.
 
 ## Main Features
 
