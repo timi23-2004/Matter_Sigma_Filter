@@ -11,7 +11,7 @@ threshold using ebtables. It supports both live network interface monitoring and
 - Detects and processes Matter/Sigma 1 protocol packets
 - Counts packets per MAC address pair within a time window
 - Automatically blocks MAC address pairs with excessive traffic using ebtables
-- Suppresses output and logging for blocked pairs, but continues counting
+- Suppresses output and logging for blocked pairs
 - Provides detailed logs and per-window statistics
 
 ## Usage
