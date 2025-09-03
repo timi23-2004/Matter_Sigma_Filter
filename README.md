@@ -21,7 +21,7 @@ threshold using ebtables. It supports both live network interface monitoring and
 ./matter-sigma1-filter file <pcap_file>
 ```
 
-## Example:
+## Example
 
 ```
 ./matter-sigma1-filter interface wlo1
@@ -40,7 +40,7 @@ threshold using ebtables. It supports both live network interface monitoring and
 - libpcap development package
 - ebtables installed
 
-## Installation:
+## Installation
 
 Build with the provided Makefile:
 
