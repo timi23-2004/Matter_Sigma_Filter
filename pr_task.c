@@ -11,7 +11,6 @@ int main(int argc, char *argv[]) {
     pr_pcap_ctx_t *pcap_handle = NULL;
     pcap_source_t source;
     const char *source_name = NULL;
-
     if (argc < 3) {
         fprintf(stderr, "Usage: %s <source_type: interface|file> <name>\n", argv[0]);
         goto err_cleanup;
@@ -26,15 +25,14 @@ int main(int argc, char *argv[]) {
         goto err_cleanup;
     }
     source_name = argv[2];
-
     pcap_handle = pcap_initialize(source_name, source);
+    init_log_file("log.txt");
     if (pcap_handle == NULL) {
         fprintf(stderr, "Could not start packet capture on source: %s\n", source_name);
         goto err_pcap;
     }
     printf("Successfully initialized pcap on source: %s\n", source_name);
     setup_clean_handler();
-
     printf("Starting packet capture...\n");
 
     while (!interrupted_flag) {
@@ -50,6 +48,7 @@ int main(int argc, char *argv[]) {
 
 err_pcap:
     pcap_uninit(pcap_handle);
+    close_log_file("log.txt");
 err_cleanup:
     ret = EXIT_FAILURE;
     printf("Resources released. Exiting.\n");
