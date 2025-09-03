@@ -67,4 +67,3 @@ void print_packet_info_logfile(const char *time_str, const packet_info_t *pktinf
         src_ip,
         dst_ip);
 }
-
