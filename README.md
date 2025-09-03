@@ -17,14 +17,14 @@ threshold using ebtables. It supports both live network interface monitoring and
 ## Usage
 
 ```
-./matter-sigma1-filter interface <interface_name>
-./matter-sigma1-filter file <pcap_file>
+./matter_sigma_filter interface <interface_name>
+./matter_sigma1_filter file <pcap_file>
 ```
 
 ## Example
 
 ```
-./matter-sigma1-filter interface wlo1
+./matter_sigma_filter interface wlo1
 ```
 
 ## Command Line Arguments
