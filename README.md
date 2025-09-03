@@ -1,7 +1,7 @@
 # Matter_Sigma_Filter Documentation
 ## Description
 
-**Matter_Sigma_Filte** is a program for capturing and processing network traffic, specifically focusing on the 
+**Matter_Sigma_Filter** is a program for capturing and processing network traffic, specifically focusing on the 
 CASE Sigma protocol. Sigma1 refers to the first message in the protocol. The program counts packets per MAC address 
 pair and automatically blocks any MAC address pair that exceeds a configurable threshold using ```ebtables```. 
 It supports both live network interface monitoring and offline pcap file analysis.
@@ -14,7 +14,7 @@ It supports both live network interface monitoring and offline pcap file analysi
 - Automatically blocks MAC address pairs with excessive traffic using ```ebtables```
 - Suppresses output and logging for blocked pairs
 - Provides detailed logs and per-window statistics
-- 
+  
 ## Dependencies
 
 - ```libpcap``` development package
