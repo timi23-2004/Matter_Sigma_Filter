@@ -34,11 +34,11 @@ threshold using ebtables. It supports both live network interface monitoring and
 - Prints per-window statistics for MAC address pairs and packet counts
 - On blocking: ```“BLOCKED: <source MAC> -> <destination MAC>”```
 - Log file contains detailed packet information
-Dependencies
-Linux operating system
-Root privileges (required for ebtables)
-libpcap development package
-ebtables installed
+## Dependencies
+- Linux operating system
+- Root privileges (required for ebtables)
+- libpcap development package
+- ebtables installed
 
 ## Installation:
 
