@@ -1,4 +1,4 @@
-# Matter_Sigma_Filter-Documentation
+# Matter_Sigma_Filter Documentation
 ## Description
 
 Matter-Sigma-Filter is a network monitoring and filtering tool for Matter (Sigma 1) protocol UDP packets over IPv6.
