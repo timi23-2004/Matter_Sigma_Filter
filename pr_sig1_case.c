@@ -8,10 +8,11 @@
 struct mac_pair_count {
     unsigned char src_mac[6];
     unsigned char dest_mac[6];
-    int count;
-    int blocked;
+    uint16_t count;
+    uint8_t blocked;
     LIST_ENTRY(mac_pair_count) next;
 };
+
 LIST_HEAD(ip_pair_count_list, ip_pair_count);
 LIST_HEAD(mac_pair_count_list, mac_pair_count);
 static struct mac_pair_count_list mac_pair_counts;
@@ -35,11 +36,11 @@ void mac_pair_count_add(const unsigned char *src_mac, const unsigned char *dest_
     struct mac_pair_count *item;
     LIST_FOREACH(item, &mac_pair_counts, next) {
        if (memcmp(item->src_mac, src_mac, 6) == 0 && memcmp(item->dest_mac, dest_mac, 6) == 0) {
-            if(item->blocked) {
+            if (item->blocked) {
                 return;
             }
             item->count++;
-            if(item->count == 101) {
+            if (item->count == 101) {
                 printf("Packet count for %02x:%02x:%02x:%02x:%02x:%02x -> %02x:%02x:%02x:%02x:%02x:%02x reached maximum threshold of 100\n",
                     item->src_mac[0], item->src_mac[1], item->src_mac[2], item->src_mac[3], item->src_mac[4], item->src_mac[5],
                     item->dest_mac[0], item->dest_mac[1], item->dest_mac[2], item->dest_mac[3], item->dest_mac[4], item->dest_mac[5]);
@@ -80,7 +81,7 @@ void mac_pair_count_print_all(void)
     printf("\n");
 }
 
-int is_mac_pair_blocked(const unsigned char *src_mac, const unsigned char *dest_mac) {
+uint8_t is_mac_pair_blocked(const unsigned char *src_mac, const unsigned char *dest_mac) {
     struct mac_pair_count *item;
     LIST_FOREACH(item, &mac_pair_counts, next) {
         if (memcmp(item->src_mac, src_mac, 6) == 0 && memcmp(item->dest_mac, dest_mac, 6) == 0) {
