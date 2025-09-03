@@ -31,9 +31,9 @@ threshold using ebtables. It supports both live network interface monitoring and
 - `interface <name>`: Monitor live traffic on the specified network interface
 - `file <filename>`: Analyze packets from a pcap file
 ## Output
-Prints per-window statistics for MAC address pairs and packet counts
-On blocking: “BLOCKED: <source MAC> -> <destination MAC>”
-Log file contains detailed packet information
+- Prints per-window statistics for MAC address pairs and packet counts
+- On blocking: ```“BLOCKED: <source MAC> -> <destination MAC>”```
+- Log file contains detailed packet information
 Dependencies
 Linux operating system
 Root privileges (required for ebtables)
