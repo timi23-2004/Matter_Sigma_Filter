@@ -86,7 +86,7 @@ ac:de:48:00:55:66 -> ac:de:48:00:77:88 : 100 pcs
 The generated log file contains detailed packet information, for example:
 
 ```
-2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | Lenghth | Ports | IPV6 |
+2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | Length | Ports | IPV6 |
 ```
 
 
