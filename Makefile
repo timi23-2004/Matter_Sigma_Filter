@@ -1,0 +1,11 @@
+SOURCES = pr_main.c pr_pcap.c pr_print.c pr_clean.c pr_log.c pr_sig1_case.c
+
+.PHONY: all
+all: pr_main
+
+pr_main: $(SOURCES)
+	$(CC) $(SOURCES) -Wall -pedantic -lpcap -o matter_sigma_filter
+
+.PHONY: clean
+clean:
+	rm -rf pr_main
