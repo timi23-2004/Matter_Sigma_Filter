@@ -79,14 +79,14 @@ cmd: ebtables -A FORWARD -s ac:de:48:00:55:66 -d ac:de:48:00:77:88 -j DROP
 BLOCKED: ac:de:48:00:55:66 -> ac:de:48:00:77:88
 
 Packet counts per MAC pair in this window:
-ac:de:48:00:11:22 -> ac:de:48:00:33:44 : 12 pc
-ac:de:48:00:55:66 -> ac:de:48:00:77:88 : 100 pc
+ac:de:48:00:11:22 -> ac:de:48:00:33:44 : 12 pcs
+ac:de:48:00:55:66 -> ac:de:48:00:77:88 : 100 pcs
 ```
 
-Log file contains detailed packet information example:
+The generated log file contains detailed packet information, for example:
 
 ```
-2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | IPV6 |
+2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | Lenghth | Ports | IPV6 |
 ```
 
 
