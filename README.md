@@ -21,9 +21,9 @@ It supports both live network interface monitoring and offline pcap file analysi
 - ```ebtables``` tool (must be installed)
 - Root privileges (required for ```ebtables```)
 
-## Installation
+## Building
 
-Build with the provided Makefile:
+Build the program with the provided Makefile:
 
 ```
 $ make
@@ -31,8 +31,8 @@ $ make
 
 ## Usage
 Typical usage:
-Run the program as root to capture and filter CASE Sigma1 packets on a network interface or from a pcap file. 
-The program will block MAC address pairs that exceed the packet threshold.
+Run the program as `root` to capture and filter CASE Sigma1 packets on a network interface or from a pcap file. 
+The program will block MAC address pairs packet number threshold.
 ```
 ./matter_sigma_filter interface <interface_name>
 ./matter_sigma_filter file <pcap_file>
@@ -40,14 +40,14 @@ The program will block MAC address pairs that exceed the packet threshold.
 
 ## Example
 Example use case:
-To monitor live traffic on the ```wlo1``` interface and block MAC address pairs with excessive Sigma1 packets:
+To monitor live traffic on the ```wlo1``` interface and block MAC address pairs with an excessive number of Sigma1 packets:
 ```
-# ./matter_sigma_filter interface wlo1
+$ ./matter_sigma_filter interface wlo1
 ```
-A more detailed example:
-Suppose you want to analyze a pcap file named ```capture.pcap``` for Sigma1 traffic and block offending MAC address pairs:
+More detailed example:
+Suppose you want to analyze a pcap file named `capture.pcap` for Sigma1 traffic and block any MAC address pairs that exceed the packet threshold:
 ```
-# ./matter_sigma_filter file capture.pcap
+$ ./matter_sigma_filter file capture.pcap
 ```
 
 ## Command Line Arguments
@@ -55,14 +55,38 @@ Suppose you want to analyze a pcap file named ```capture.pcap``` for Sigma1 traf
 - `file <filename>`: Analyze packets from a pcap file
   
 ## Output
-- Prints per-window statistics for MAC address pairs and packet counts
-- On blocking:
-```
-BLOCKED: <source MAC> -> <destination MAC>
-```
-- Log file contains detailed packet information
 
-## Developer Information
-- Written in C, modular structure
-- Packet processing uses the ```packet_info_t``` structure
-- Blocking is performed per MAC address pair using ```ebtables``` rules
+Example output:
+
+```
+Captured a packet with length: 136
+Source MAC: ac:de:48:00:55:66
+Destination MAC: ac:de:48:00:77:88
+UDP Source Port: 5540
+UDP Destination Port: 5540
+IPv6 Source: fe80::1898:969a:bcb8:6235
+IPv6 Destination: fe80::8ebc:7bef:fe48:a61e
+message flags: 0x04
+session id: 0x0000
+security flags: 0x00
+message counter: 0xb6058b0a
+source node id: 0x87e7d9ea7ecf98b0
+destination node id: (not present)
+protocol opcode: 0x30
+
+Packet count for ac:de:48:00:55:66 -> ac:de:48:00:77:88 reached maximum threshold of 100
+cmd: ebtables -A FORWARD -s ac:de:48:00:55:66 -d ac:de:48:00:77:88 -j DROP
+BLOCKED: ac:de:48:00:55:66 -> ac:de:48:00:77:88
+
+Packet counts per MAC pair in this window:
+ac:de:48:00:11:22 -> ac:de:48:00:33:44 : 12 pc
+ac:de:48:00:55:66 -> ac:de:48:00:77:88 : 100 pc
+```
+
+Log file contains detailed packet information example:
+
+```
+2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | IPV6 |
+```
+
+
