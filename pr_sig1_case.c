@@ -73,7 +73,7 @@ void mac_pair_count_print_all(void)
     struct mac_pair_count *item;
     printf("Packet counts per MAC pair in this window:\n");
     LIST_FOREACH(item, &mac_pair_counts, next) {
-        printf("%02x:%02x:%02x:%02x:%02x:%02x -> %02x:%02x:%02x:%02x:%02x:%02x : %d db\n",
+        printf("%02x:%02x:%02x:%02x:%02x:%02x -> %02x:%02x:%02x:%02x:%02x:%02x : %d pc\n",
             item->src_mac[0], item->src_mac[1], item->src_mac[2], item->src_mac[3], item->src_mac[4], item->src_mac[5],
             item->dest_mac[0], item->dest_mac[1], item->dest_mac[2], item->dest_mac[3], item->dest_mac[4], item->dest_mac[5],
             item->count);
@@ -98,3 +98,4 @@ void mac_pair_count_reset_counts(void)
         item->count = 0;
     }
 }
+
