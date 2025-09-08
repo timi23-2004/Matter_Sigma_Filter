@@ -31,9 +31,5 @@ void log_packet(const struct pcap_pkthdr *header, const packet_info_t *pktinfo) 
     struct tm *tm_info = localtime(&now);
     char time_str[32];
     strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", tm_info);
-    if (!log_file) {
-        init_log_file("log.txt");
-    }
     print_packet_info_logfile(time_str, pktinfo);
-    close_log_file();
 }
