@@ -89,4 +89,7 @@ The generated log file contains detailed packet information, for example:
 2025-09-04 12:34:56 | ac:de:48:00:11:22 -> ac:de:48:00:33:44 | UDP | Length | Ports | IPV6 |
 ```
 
+## License
 
+This project is licensed under the GNU General Public License v3.0.
+See the [LICENSE](LICENSE) file for details.
